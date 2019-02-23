@@ -17,6 +17,7 @@ class CashRegister
   end 
   
   def add_item(item, price, quantity = 1)
+    @last_item_price = price
     @item = item 
     @quantity = quantity
     @cart.concat([item] * quantity)
@@ -33,6 +34,10 @@ class CashRegister
   
   def items
     @cart
+  end 
+  
+  def void_last_transaction
+    total -= @last_item_price
   end 
   
 end
